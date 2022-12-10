@@ -1,4 +1,4 @@
-@extends('controlPanel.parent')
+@extends('cms.parent')
 
 @section('page-name',__('cms.admins'))
 @section('main-page',__('cms.hr'))

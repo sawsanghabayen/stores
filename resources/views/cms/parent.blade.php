@@ -11,8 +11,8 @@ Purchase: https://1.envato.market/EA4JP
 Renew Support: https://1.envato.market/EA4JP
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
-<html lang="{{App::isLocale('en') ? 'en' : 'ar'}}" direction="{{App::isLocale('en') ? 'ltr' : 'rtl'}}"
-	style="direction: {{App::isLocale('en') ? 'ltr' : 'rtl'}};">
+<html lang="en" direction="ltr"
+	style="direction: 'ltr'">
 <!--begin::Head-->
 
 <head>
@@ -27,26 +27,26 @@ License: You must have a valid license purchased only from themeforest(the above
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
 	<!--begin::Page Vendors Styles(used by this page)-->
-	<link href="{{asset('controlPanel/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet"
+	<link href="{{asset('cms/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet"
 		type="text/css" />
 	<!--end::Page Vendors Styles-->
 	<!--begin::Global Theme Styles(used by all pages)-->
-	<link href="{{asset('controlPanel/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
 
 	{{-- @if (App::isLocale('ar')) --}}
-	<link href="{{asset('controlPanel/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
 	{{-- @else --}}
 	{{-- {{dd('en');}} --}}
-	<link href="{{asset('controlPanel/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 	{{-- @endif --}}
 
 	<!--end::Global Theme Styles-->
 	<!--begin::Layout Themes(used by all pages)-->
-	<link href="{{asset('controlPanel/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 	<!--end::Layout Themes-->
 	<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
 
@@ -110,7 +110,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="brand flex-column-auto" id="kt_brand">
 					<!--begin::Logo-->
 					<a href="#" class="brand-logo">
-						<img alt="Logo" src="{{asset('controlPanel/assets/media/logos/logo-light.png')}}" />
+						<img alt="Logo" src="{{asset('cms/assets/media/logos/logo-light.png')}}" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Toggle-->
@@ -145,7 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--begin::Menu Nav-->
 						<ul class="menu-nav">
 							<li class="menu-item menu-item-active" aria-haspopup="true">
-								<a href="" class="menu-link">
+								<a href="{{route('cms.dashboard')}}" class="menu-link">
 									<span class="svg-icon menu-icon">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg"
@@ -275,87 +275,16 @@ License: You must have a valid license purchased only from themeforest(the above
 							{{-- @endcanany --}}
 {{--  --}}
 							{{-- @canany(['Read-Contacts' ]) --}}
-							<li class="menu-section">
-								<h4 class="menu-text">Client Services</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('contacts.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Communication\Chat4.svg--><svg
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-											viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<path
-													d="M21.9999843,15.009808 L22.0249378,15 L22.0249378,19.5857864 C22.0249378,20.1380712 21.5772226,20.5857864 21.0249378,20.5857864 C20.7597213,20.5857864 20.5053674,20.4804296 20.317831,20.2928932 L18.0249378,18 L5,18 C3.34314575,18 2,16.6568542 2,15 L2,6 C2,4.34314575 3.34314575,3 5,3 L19,3 C20.6568542,3 22,4.34314575 22,6 L22,15 C22,15.0032706 21.9999948,15.0065399 21.9999843,15.009808 Z M6.16794971,10.5547002 C7.67758127,12.8191475 9.64566871,14 12,14 C14.3543313,14 16.3224187,12.8191475 17.8320503,10.5547002 C18.1384028,10.0951715 18.0142289,9.47430216 17.5547002,9.16794971 C17.0951715,8.86159725 16.4743022,8.98577112 16.1679497,9.4452998 C15.0109146,11.1808525 13.6456687,12 12,12 C10.3543313,12 8.9890854,11.1808525 7.83205029,9.4452998 C7.52569784,8.98577112 6.90482849,8.86159725 6.4452998,9.16794971 C5.98577112,9.47430216 5.86159725,10.0951715 6.16794971,10.5547002 Z"
-													fill="#000000" />
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Contact Requests</span>
-								</a>
-							</li>
-							{{-- @endcanany --}}
-							{{-- @canany(['Read-Infos' ]) --}}
-							<li class="menu-section">
-								<h4 class="menu-text">Basic Info.</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('infos.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg-->
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-											viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<path
-													d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-													fill="#000000" fill-rule="nonzero"
-													transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-												<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-													rx="1" />
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Basic Info.</span>
-								</a>
-							</li>
-							<li class="menu-section">
-								<h4 class="menu-text">Settings</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('settings.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										{{-- <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Code\Settings4.svg--> --}}
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"/>
-												<path d="M18.6225,9.75 L18.75,9.75 C19.9926407,9.75 21,10.7573593 21,12 C21,13.2426407 19.9926407,14.25 18.75,14.25 L18.6854912,14.249994 C18.4911876,14.250769 18.3158978,14.366855 18.2393549,14.5454486 C18.1556809,14.7351461 18.1942911,14.948087 18.3278301,15.0846699 L18.372535,15.129375 C18.7950334,15.5514036 19.03243,16.1240792 19.03243,16.72125 C19.03243,17.3184208 18.7950334,17.8910964 18.373125,18.312535 C17.9510964,18.7350334 17.3784208,18.97243 16.78125,18.97243 C16.1840792,18.97243 15.6114036,18.7350334 15.1896699,18.3128301 L15.1505513,18.2736469 C15.008087,18.1342911 14.7951461,18.0956809 14.6054486,18.1793549 C14.426855,18.2558978 14.310769,18.4311876 14.31,18.6225 L14.31,18.75 C14.31,19.9926407 13.3026407,21 12.06,21 C10.8173593,21 9.81,19.9926407 9.81,18.75 C9.80552409,18.4999185 9.67898539,18.3229986 9.44717599,18.2361469 C9.26485393,18.1556809 9.05191298,18.1942911 8.91533009,18.3278301 L8.870625,18.372535 C8.44859642,18.7950334 7.87592081,19.03243 7.27875,19.03243 C6.68157919,19.03243 6.10890358,18.7950334 5.68746499,18.373125 C5.26496665,17.9510964 5.02757002,17.3784208 5.02757002,16.78125 C5.02757002,16.1840792 5.26496665,15.6114036 5.68716991,15.1896699 L5.72635306,15.1505513 C5.86570889,15.008087 5.90431906,14.7951461 5.82064513,14.6054486 C5.74410223,14.426855 5.56881236,14.310769 5.3775,14.31 L5.25,14.31 C4.00735931,14.31 3,13.3026407 3,12.06 C3,10.8173593 4.00735931,9.81 5.25,9.81 C5.50008154,9.80552409 5.67700139,9.67898539 5.76385306,9.44717599 C5.84431906,9.26485393 5.80570889,9.05191298 5.67216991,8.91533009 L5.62746499,8.870625 C5.20496665,8.44859642 4.96757002,7.87592081 4.96757002,7.27875 C4.96757002,6.68157919 5.20496665,6.10890358 5.626875,5.68746499 C6.04890358,5.26496665 6.62157919,5.02757002 7.21875,5.02757002 C7.81592081,5.02757002 8.38859642,5.26496665 8.81033009,5.68716991 L8.84944872,5.72635306 C8.99191298,5.86570889 9.20485393,5.90431906 9.38717599,5.82385306 L9.49484664,5.80114977 C9.65041313,5.71688974 9.7492905,5.55401473 9.75,5.3775 L9.75,5.25 C9.75,4.00735931 10.7573593,3 12,3 C13.2426407,3 14.25,4.00735931 14.25,5.25 L14.249994,5.31450877 C14.250769,5.50881236 14.366855,5.68410223 14.552824,5.76385306 C14.7351461,5.84431906 14.948087,5.80570889 15.0846699,5.67216991 L15.129375,5.62746499 C15.5514036,5.20496665 16.1240792,4.96757002 16.72125,4.96757002 C17.3184208,4.96757002 17.8910964,5.20496665 18.312535,5.626875 C18.7350334,6.04890358 18.97243,6.62157919 18.97243,7.21875 C18.97243,7.81592081 18.7350334,8.38859642 18.3128301,8.81033009 L18.2736469,8.84944872 C18.1342911,8.99191298 18.0956809,9.20485393 18.1761469,9.38717599 L18.1988502,9.49484664 C18.2831103,9.65041313 18.4459853,9.7492905 18.6225,9.75 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
-												<path d="M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
-											</g>
-										</svg><!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Settings</span>
-								</a>
-							</li>
-							{{-- @endcanany --}}
+						
 				
 
 							<li class="menu-section">
-								<h4 class="menu-text">PortFolio Management</h4>
+								<h4 class="menu-text">Store Management</h4>
 								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
 							</li>
 							
 							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('categories.index')}}" class="menu-link">
+								<a href="{{route('markets.index')}}" class="menu-link">
 									<span class="svg-icon menu-icon">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -367,11 +296,11 @@ License: You must have a valid license purchased only from themeforest(the above
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-text">Categories</span>
+									<span class="menu-text">Stores</span>
 								</a>
 							</li>
 							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('projects.index')}}" class="menu-link">
+								<a href="{{route('products.index')}}" class="menu-link">
 									<span class="svg-icon menu-icon">
 										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -383,506 +312,12 @@ License: You must have a valid license purchased only from themeforest(the above
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="menu-text">Projects</span>
+									<span class="menu-text">Products</span>
 								</a>
 							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('educations.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)"></path>
-												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3"></path>
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">educations</span>
-								</a>
-							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('skills.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)"></path>
-												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3"></path>
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">skills</span>
-								</a>
-							</li>
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('experiences.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Bucket.svg-->
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24"></rect>
-												<path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000)"></path>
-												<path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3"></path>
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">experiences</span>
-								</a>
-							</li>
+					
 
 
-
-
-
-
-							<li class="menu-section">
-								<h4 class="menu-text">Account Management</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-
-							<li class="menu-item" aria-haspopup="true">
-								<a href="{{route('cms.profile.personal-information')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-											xmlns="http://www.w3.org/2000/svg"
-											xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-											viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<path
-													d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-													fill="#000000" fill-rule="nonzero"
-													transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-												<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-													rx="1" />
-											</g>
-										</svg>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Edit Profile</span>
-								</a>
-							</li>
-							
-							@canany(['Update-Detail' , 'Update-Basic_info' ,'Update-Question'])
-
-
-							<li class="menu-section">
-								<h4 class="menu-text">Settings</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							@can(['Update-Detail'])
-
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('settings.index')}}" class="menu-link ">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">{{__('cms.edit_basic_info')}}</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">{{__('cms.edit_basic_info')}}</span>
-											</span>
-										</li>
-											</a>
-										
-
-									
-	
-									</ul>
-								</div>
-							</li>
-							@endcan
-
-							@can(['Update-Basic_info'])
-
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('details.index')}}" class="menu-link ">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">{{__('cms.edit_home_content')}}</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">{{__('cms.edit_home_content')}}</span>
-											</span>
-										</li>
-											</a>
-										
-
-									
-	
-									</ul>
-								</div>
-							</li>
-							@endcan
-
-							@can(['Update-Question'])
-
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('questions.index')}}" class="menu-link ">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">{{__('cms.edit_questions')}}</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">{{__('cms.edit_questions')}}</span>
-											</span>
-										</li>
-											</a>
-										
-
-									
-	
-									</ul>
-								</div>
-							</li>
-							@endcan
-
-							@endcanany
-
-							@canany(['Update-Answer' , 'Update-Service' ,'Update-Partner' ,'Delete-Answer' , 'Delete-Service' ,'Delete-Partner','Create-Answer' , 'Create-Service' ,'Create-Partner','Read-Answers' , 'Read-Services' ,'Read-Partners'])
-							<li class="menu-section">
-								<h4 class="menu-text">CRUD</h4>
-								<i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-							</li>
-							@canany(['Create-Service' , 'Update-Service' ,'Delete-Service' ,'Read-Services'])
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('services.index')}}" class="menu-link ">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Services</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">Services</span>
-											</span>
-										</li>
-											</a>
-										
-
-										
-	
-									</ul>
-								</div>
-							</li>
-							@endcanany
-							@canany(['Create-Answer' , 'Update-Answer' ,'Delete-Answer' ,'Read-Answers'])
-
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('answers.index')}}" class="menu-link ">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Answers</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">Answers</span>
-											</span>
-										</li>
-											</a>
-										
-
-										
-	
-									</ul>
-								</div>
-							</li>
-							@endcanany
-							@canany(['Create-Partner' , 'Update-Partner' ,'Delete-Partner' ,'Read-Partners'])
-							
-							<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-								<a href="{{route('partners.index')}}" class="menu-link">
-									<span class="svg-icon menu-icon">
-										<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-										{{-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-												<rect x="0" y="0" width="24" height="24" />
-												<rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-												<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-											</g>
-										</svg> --}}
-										<span class="svg-icon menu-icon">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo1\dist/../src/media/svg/icons\Design\Edit.svg--><svg
-												xmlns="http://www.w3.org/2000/svg"
-												xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-												viewBox="0 0 24 24" version="1.1">
-												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-													<rect x="0" y="0" width="24" height="24" />
-													<path
-														d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z"
-														fill="#000000" fill-rule="nonzero"
-														transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) " />
-													<rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2"
-														rx="1" />
-												</g>
-											</svg>
-											<!--end::Svg Icon-->
-										</span>
-										<!--end::Svg Icon-->
-									</span>
-									<span class="menu-text">Partners</span>
-									<i class="menu-arrow"></i>
-								</a>
-								<div class="menu-submenu">
-									<i class="menu-arrow"></i>
-									<ul class="menu-subnav">
-										<li class="menu-item menu-item-parent" aria-haspopup="true">
-											<span class="menu-link">
-												<span class="menu-text">Partners</span>
-											</span>
-										</li>
-
-											
-											
-											</a>
-									
-
-											{{-- <div class="menu-submenu">
-												<i class="menu-arrow"></i>
-												<ul class="menu-subnav">
-													<li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-														<a href="javascript:;" class="menu-link menu-toggle">
-															<i class="menu-bullet menu-bullet-dot">
-																<span></span>
-															</i>
-															<span class="menu-text">Profile 1</span>
-															<i class="menu-arrow"></i>
-														</a>
-														<div class="menu-submenu">
-															<i class="menu-arrow"></i>
-															<ul class="menu-subnav">
-																<li class="menu-item" aria-haspopup="true">
-																	<a href="custom/apps/profile/profile-1/overview.html" class="menu-link">
-																		<i class="menu-bullet menu-bullet-line">
-																			<span></span>
-																		</i>
-																		<span class="menu-text">Overview</span>
-																	</a>
-																</li>
-																<li class="menu-item" aria-haspopup="true">
-																	<a href="custom/apps/profile/profile-1/personal-information.html" class="menu-link">
-																		<i class="menu-bullet menu-bullet-line">
-																			<span></span>
-																		</i>
-																		<span class="menu-text">Personal Information</span>
-																	</a>
-																</li>
-																<li class="menu-item" aria-haspopup="true">
-																	<a href="custom/apps/profile/profile-1/account-information.html" class="menu-link">
-																		<i class="menu-bullet menu-bullet-line">
-																			<span></span>
-																		</i>
-																		<span class="menu-text">Account Information</span>
-																	</a>
-																</li>
-																<li class="menu-item" aria-haspopup="true">
-																	<a href="custom/apps/profile/profile-1/change-password.html" class="menu-link">
-																		<i class="menu-bullet menu-bullet-line">
-																			<span></span>
-																		</i>
-																		<span class="menu-text">Change Password</span>
-																	</a>
-																</li>
-																<li class="menu-item" aria-haspopup="true">
-																	<a href="custom/apps/profile/profile-1/email-settings.html" class="menu-link">
-																		<i class="menu-bullet menu-bullet-line">
-																			<span></span>
-																		</i>
-																		<span class="menu-text">Email Settings</span>
-																	</a>
-																</li>
-															</ul>
-														</div>
-													</li>
-													<li class="menu-item" aria-haspopup="true">
-														<a href="custom/apps/profile/profile-2.html" class="menu-link">
-															<i class="menu-bullet menu-bullet-dot">
-																<span></span>
-															</i>
-															<span class="menu-text">Profile 2</span>
-														</a>
-													</li>
-													<li class="menu-item" aria-haspopup="true">
-														<a href="custom/apps/profile/profile-3.html" class="menu-link">
-															<i class="menu-bullet menu-bullet-dot">
-																<span></span>
-															</i>
-															<span class="menu-text">Profile 3</span>
-														</a>
-													</li>
-													<li class="menu-item" aria-haspopup="true">
-														<a href="custom/apps/profile/profile-4.html" class="menu-link">
-															<i class="menu-bullet menu-bullet-dot">
-																<span></span>
-															</i>
-															<span class="menu-text">Profile 4</span>
-														</a>
-													</li>
-												</ul>
-											</div> --}}
-									
-	
-									</ul>
-								</div>
-							</li>
-							@endcanany
-							@endcanany
 				
 							<li class="menu-item" aria-haspopup="true">
 								<a href="{{route('cms.logout')}}" class="menu-link">
@@ -1904,7 +1339,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<i class="icon-2x text-dark-50 flaticon2-world"></i>
 										{{-- </div> --}}
 										{{-- <img class="h-20px w-20px rounded-sm"
-											src="{{asset('controlPanel/assets/media/svg/flags/226-united-states.svg')}}"
+											src="{{asset('cms/assets/media/svg/flags/226-united-states.svg')}}"
 											alt="" /> --}}
 									</div>
 								</div>
@@ -1914,13 +1349,13 @@ License: You must have a valid license purchased only from themeforest(the above
 									class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right">
 									<!--begin::Nav-->
 									<ul class="navi navi-hover py-4">
-										@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-											<li class="navi-item">
+										{{-- @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties) --}}
+											{{-- <li class="navi-item">
 												<a class="navi-link" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
 													{{ $properties['native'] }}
 												</a>
-											</li>
-										@endforeach
+											</li> --}}
+										{{-- @endforeach --}}
 									</ul>
 									{{-- <ul class="navi navi-hover py-4">
 										<!--begin::Item-->
@@ -1928,7 +1363,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<a href="#" class="navi-link">
 												<span class="symbol symbol-20 mr-3">
 												
-													<img src="{{asset('controlPanel/assets/media/svg/flags/226-united-states.svg')}}"
+													<img src="{{asset('cms/assets/media/svg/flags/226-united-states.svg')}}"
 														alt="" />
 												</span>
 												<span class="navi-text">English</span>
@@ -1939,7 +1374,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<li class="navi-item">
 											<a href="#" class="navi-link">
 												<span class="symbol symbol-20 mr-3">
-													<img src="{{asset('controlPanel/assets/media/svg/flags/195-france.svg')}}"
+													<img src="{{asset('cms/assets/media/svg/flags/195-france.svg')}}"
 														alt="" />
 												</span>
 												<span class="navi-text">Arabic</span>
@@ -2118,8 +1553,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted font-weight-bold mr-2">{{now()->year}}©</span>
 							<a href="#" target="_blank" class="text-dark-75 text-hover-primary">{{env('APP_NAME')}} -
-								Sawsan
-								Ghabayen</a>
+								Dana
+								Okasha</a>
 							{{-- target="_blank" --}}
 						</div>
 						<!--end::Copyright-->
@@ -2158,13 +1593,13 @@ License: You must have a valid license purchased only from themeforest(the above
 			<div class="d-flex align-items-center mt-5">
 				<div class="symbol symbol-100 mr-5">
 					<div class="symbol-label"
-						style="background-image:url('{{asset('controlPanel/assets/media/users/300_21.jpg')}}')"></div>
+						style="background-image:url('{{asset('cms/assets/media/users/300_21.jpg')}}')"></div>
 					<i class="symbol-badge bg-success"></i>
 				</div>
 				<div class="d-flex flex-column">
 					<a href="#"
 						class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{auth()->user()->name}}</a>
-					<div class="text-muted mt-1">@auth('admin') Admin @else Store @endauth</div>
+					<div class="text-muted mt-1"></div>
 					<div class="navi mt-2">
 						<a href="#" class="navi-item">
 							<span class="navi-link p-0 pb-2">
@@ -2265,19 +1700,19 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--end::Global Config-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
 	<script src="{{asset('cms/assets/js/pages/crud/forms/widgets/bootstrap-select.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/js/pages/crud/file-upload/image-input.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/plugins/global/plugins.bundle.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/js/scripts.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/js/pages/crud/file-upload/image-input.js')}}"></script>
+	<script src="{{asset('cms/assets/plugins/global/plugins.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/js/scripts.bundle.js')}}"></script>
 	<!--end::Global Theme Bundle-->
 	<!--begin::Page Vendors(used by this page)-->
-	<script src="{{asset('controlPanel/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
 	<!--end::Page Vendors-->
 	<!--begin::Page Scripts(used by this page)-->
-	<script src="{{asset('controlPanel/assets/js/pages/widgets.js')}}"></script>
+	<script src="{{asset('cms/assets/js/pages/widgets.js')}}"></script>
 	<!--end::Page Scripts-->
-	<script src="{{asset('controlPanel/assets/js/pages/features/miscellaneous/toastr.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/js/pages/features/miscellaneous/sweetalert2.js')}}"></script>
+	<script src="{{asset('cms/assets/js/pages/features/miscellaneous/toastr.js')}}"></script>
+	<script src="{{asset('cms/assets/js/pages/features/miscellaneous/sweetalert2.js')}}"></script>
 	<script src="{{asset('js/axios.js')}}"></script>
 	<script src="{{asset('js/crud.js?n=1')}}"></script>
 	@yield('scripts')

@@ -1,8 +1,8 @@
-@extends('controlPanel.parent')
+@extends('cms.parent')
 
-@section('page-name',__('cms.projects'))
+@section('page-name',__('cms.products'))
 @section('main-page',__('cms.hr'))
-@section('sub-page',__('cms.projects'))
+@section('sub-page',__('cms.products'))
 @section('page-name-small',__('cms.index'))
 
 @section('styles')
@@ -15,11 +15,11 @@
     <!--begin::Header-->
     <div class="card-header border-0 py-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label font-weight-bolder text-dark">{{__('cms.projects')}}</span>
+            <span class="card-label font-weight-bolder text-dark">{{__('cms.products')}}</span>
             <span class="text-muted mt-3 font-weight-bold font-size-sm"></span>
         </h3>
         <div class="card-toolbar">
-            <a href="{{route('projects.create')}}"
+            <a href="{{route('products.create')}}"
                 class="btn btn-info font-weight-bolder font-size-sm">{{__('cms.create')}}</a>
         </div>
     </div>
@@ -31,38 +31,32 @@
             <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_2">
                 <thead>
                     <tr class="text-uppercase">
-                        <th style="min-width: 120px">{{__('cms.image')}}</th>
-                        <th style="min-width: 120px">{{__('cms.video')}}</th>
-                        <th style="min-width: 120px">{{__('cms.sliderimage')}}</th>
-                        <th style="min-width: 120px">{{__('cms.youtube_url')}}</th>
-                        <th style="min-width: 150px">{{__('cms.category')}}</th>
-                        <th style="min-width: 150px">{{__('cms.name')}}</th>
-                        <th style="min-width: 150px">{{__('cms.client')}}</th>
-                        <th style="min-width: 150px">{{__('cms.technologies')}}</th>
-                        <th style="min-width: 150px">{{__('cms.duration')}}</th>
-                        <th style="min-width: 150px">{{__('cms.budget')}}</th>
-                        <th style="min-width: 150px">{{__('cms.github_url')}}</th>
-                        {{-- @canany([ 'Delete-project','Update-project']) --}}
+                        <th style="min-width: 120px">Image</th>
+                        <th style="min-width: 150px">Store Name</th>
+                        <th style="min-width: 150px">Name</th>
+                        <th style="min-width: 150px">Description</th>
+                        <th style="min-width: 150px">Price</th>
+                        <th style="min-width: 150px">Discount Price</th>
+                        <th style="min-width: 150px">Discount Status</th>
                         <th class="pr-0 text-right" style="min-width: 160px">{{__('cms.actions')}}</th>
-                        {{-- @endcanany --}}
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($projects as $project)
+                    @foreach ($products as $product)
                     <tr>
-                        {{-- @if($project->category_name == 'IMAGE FORMATE') --}}
+                     
 
                         <td class="pl-0 py-8">
                             <div class="d-flex align-items-center">
                             <div class="symbol symbol-50 symbol-light mr-4">
                                 <span class="symbol-label">
-                                    @if ($project->image != null)
+                                    @if ($product->image != null)
                                    
                                      
-                                    <img src="{{Storage::url($project->image ?? '')}}"
+                                    <img src="{{Storage::url($product->image ?? '')}}"
                                         class="h-75 align-self-end" alt="" /> 
                                         @else
-                                        <img src="{{asset('controlPanel/assets/media/users/project.jpg')}}"
+                                        <img src="{{asset('cms/assets/media/users/project.jpg')}}"
                                         class="h-75 align-self-end" alt="" />
                                     @endif
 
@@ -70,88 +64,34 @@
                             </div>
                             </div>
                         </td>
-                        {{-- @endif --}}
-                        {{-- @if($project->category_name == 'SLIDER FORMATE') --}}
-
-                        {{-- <td class="pl-0 py-8">
-                            <div class="d-flex align-items-center">
-                            <div class="symbol symbol-50 symbol-light mr-4">
-                                <span class="symbol-label">
-                                    <img src="{{Storage::url('images/projects/' .$project->main_images_slider ?? '')}}"
-                                        class="h-75 align-self-end" alt="" />
-                                </span>
-                            </div>
-                            </div>
-                        </td> --}}
-                        {{-- @endif --}}
-                        {{-- @if($project->category_name == 'VIDEO FORMATE') --}}
+               
+                 
                         <td>
-
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{Storage::url($project->video ?? '')}}</span>
-
-                            {{-- <div class="d-flex align-items-center">
-                            <div class="symbol symbol-50 symbol-light mr-4">
-                                <span class="symbol-label">
-                                    <video id="video" class="responsive-video" controls poster="img/projects/project-6.jpg">
-                                        <source src="{{Storage::url($project->video ?? '')}}" class="h-75 align-self-end" type="video/mp4">
-                                    </video>
-                                </span>
-                            </div>
-                            </div> --}}
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->store_name}}</span>
                         </td>
-                        {{-- @endif --}}
-                        {{-- @if($project->category_name == 'YOUTUBE FORMATE') --}}
-                        
-                        <td class="pl-0 py-8">
-                            <div class="d-flex align-items-center">
-                            <div class="symbol symbol-50 symbol-light mr-4">
-                                <span class="symbol-label">
-                                    @if ($project->main_image != null)
 
-                                    <img src="{{Storage::url('images/projects/' .$project->main_image ?? '')}}"
-                                        class="h-75 align-self-end" alt="" />
-                                    @else
-                                    <img src="{{asset('controlPanel/assets/media/users/project.jpg')}}"
-                                    class="h-75 align-self-end" alt="" />
-                                    @endif
-                                </span>
-                            </div>
-                            </div>
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->name}}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->description}}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->price}}</span>
+                        </td>
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->discount_price}}</span>
+                        </td>
+                        
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->active_status}}</span>
                         </td>
                       
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->url_youtube}}</span>
-                        </td>
-                        {{-- @endif --}}
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->category_name}}</span>
-                        </td>
-
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->name}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->client}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->technologies}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->duration}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->budget}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$project->url_website}}</span>
-                        </td>
-                        {{-- @canany([ 'Delete-project','Update-project']) --}}
-
                     
                         <td class="pr-0 text-right">
-                            {{-- @can('Update-project') --}}
+                            {{-- @can('Update-product') --}}
                                 
-                            <a href="{{route('projects.edit',$project->id)}}"
+                            <a href="{{route('products.edit',$product->id)}}"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -172,9 +112,9 @@
                                 </span>
                             </a>
                             {{-- @endcan --}}
-                            {{-- @can('Delete-project') --}}
+                            {{-- @can('Delete-product') --}}
 
-                            <a href="#" onclick="performDelete('{{$project->id}}', this)"
+                            <a href="#" onclick="performDelete('{{$product->id}}', this)"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -208,10 +148,10 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('controlPanel/assets/js/pages/widgets.js')}}"></script>
+<script src="{{asset('cms/assets/js/pages/widgets.js')}}"></script>
 <script>
       function performDelete(id, reference) {
-        axios.delete('/cms/admin/projects/'+id)
+        axios.delete('/cms/admin/products/'+id)
         .then(function (response) {
             console.log(response);
             // toastr.success(response.data.message);

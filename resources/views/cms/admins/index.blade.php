@@ -1,4 +1,4 @@
-@extends('controlPanel.parent')
+@extends('cms.parent')
 
 @section('page-name',__('cms.admins'))
 @section('main-page',__('cms.hr'))
@@ -32,17 +32,12 @@
                 <thead>
                     <tr class="text-uppercase">
                         <th style="min-width: 120px">{{__('cms.full_name')}}</th>
-							@canany(['Read-Permissions' ,'Update-Permission'])
 
-                        <th style="min-width: 150px">{{__('cms.permissions')}}</th>
-                             @endcanany
                         <th style="min-width: 150px">{{__('cms.email')}}</th>
                         <th style="min-width: 150px">{{__('cms.mobile')}}</th>
                         <th style="min-width: 150px">Verified</th>
-                        @canany([ 'Update-Admin' ,'Delete-Admin' ])
 
                         <th class="pr-0 text-right" style="min-width: 160px">{{__('cms.actions')}}</th>
-                        @endcanany
 
                     </tr>
                 </thead>
@@ -53,16 +48,9 @@
                             <a href="#"
                                 class="text-dark-75 font-weight-bolder text-hover-primary font-size-lg">{{$admin->name}}</a>
                         </td>
-                        @canany(['Read-Permissions' ,'Update-Permission'])
 
-                        <td class="pr-0">
-                            <a href="{{route('admin.edit-permissions',$admin->id)}}"
-                                class="btn btn-light-primary font-weight-bolder font-size-sm">({{$admin->permissions_count}})
-                                {{-- class="btn btn-light-primary font-weight-bolder font-size-sm">({{$admin->permissions_count}}) --}}
-                                Permission/s</a>
-                        </td>
+                  
 
-                       @endcanany
                         <td>
                             <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$admin->email}}</span>
                         </td>
@@ -78,10 +66,8 @@
                                 : 'Not Verified'}}</span>
                         </td>
                       
-                        @canany([ 'Update-Admin' ,'Delete-Admin' ])
                        
                         <td class="pr-0 text-right">
-                            @can([ 'Update-Admin'])
                             <a href="{{route('admins.edit',$admin->id)}}"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -102,8 +88,7 @@
                                     <!--end::Svg Icon-->
                                 </span>
                             </a>
-                            @endcan
-                            @can([ 'Delete-Admin'])
+                         
                             <a href="#" onclick="performDelete('{{$admin->id}}', this)"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
@@ -123,9 +108,7 @@
                                     <!--end::Svg Icon-->
                                 </span>
                             </a>
-                            @endcan
                         </td>
-                        @endcanany
                     </tr>
                     @endforeach
             </table>
@@ -138,7 +121,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{asset('controlPanel/assets/js/pages/widgets.js')}}"></script>
+<script src="{{asset('cms/assets/js/pages/widgets.js')}}"></script>
 <script>
       function performDelete(id, reference) {
         axios.delete('/cms/admin/admins/'+id)
@@ -154,5 +137,6 @@
             showMessage(error.response.data);
         });
     }
+    
 </script>
 @endsection

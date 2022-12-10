@@ -11,8 +11,8 @@ Purchase: https://1.envato.market/EA4JP
 Renew Support: https://1.envato.market/EA4JP
 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
 -->
-<html lang="{{App::isLocale('en') ? 'en' : 'ar'}}" direction="{{App::isLocale('en') ? 'ltr' : 'rtl'}}"
-	style="direction: {{App::isLocale('en') ? 'ltr' : 'rtl'}};">
+<html lang="en" direction="ltr"
+	style="direction: 'ltr' ">
 <!--begin::Head-->
 
 <head>
@@ -32,27 +32,27 @@ License: You must have a valid license purchased only from themeforest(the above
 
 	<!--end::Fonts-->
 	<!--begin::Page Custom Styles(used by this page)-->
-	<link href="{{asset('controlPanel/assets/css/pages/login/classic/login-4.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/pages/login/classic/login-4.css')}}" rel="stylesheet" type="text/css" />
 	<!--end::Page Custom Styles-->
 	<!--begin::Global Theme Styles(used by all pages)-->
-	<link href="{{asset('controlPanel/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/plugins/custom/prismjs/prismjs.bundle.css')}}" rel="stylesheet" type="text/css" />
 	{{--
 	<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" /> --}}
 
 	@if (App::isLocale('ar'))
-	<link href="{{asset('controlPanel/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
 	@else
 	{{-- {{dd('en');}} --}}
-	<link href="{{asset('controlPanel/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
 	@endif
 
 	<!--end::Global Theme Styles-->
 	<!--begin::Layout Themes(used by all pages)-->
-	<link href="{{asset('controlPanel/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
-	<link href="{{asset('controlPanel/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/header/base/light.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/brand/dark.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('cms/assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 	<!--end::Layout Themes-->
 	<link rel="shortcut icon" href="{{asset('app/images/logo.png')}}" />
 </head>
@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Login-->
 		<div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
 			<div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat"
-				style="background-image: url({{asset('controlPanel/assets/media/bg/bg-3.jpg')}});">
+				style="background-image: url({{asset('cms/assets/media/bg/bg-3.jpg')}});">
 				<div class="login-form text-center p-7 position-relative overflow-hidden">
 					<!--begin::Login Header-->
 					<div class="d-flex flex-center mb-15">
@@ -154,15 +154,15 @@ License: You must have a valid license purchased only from themeforest(the above
 	</script>
 	<!--end::Global Config-->
 	<!--begin::Global Theme Bundle(used by all pages)-->
-	<script src="{{asset('controlPanel/assets/plugins/global/plugins.bundle.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
-	<script src="{{asset('controlPanel/assets/js/scripts.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/plugins/global/plugins.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
+	<script src="{{asset('cms/assets/js/scripts.bundle.js')}}"></script>
 	<!--end::Global Theme Bundle-->
 	<!--begin::Page Scripts(used by this page)-->
-	<script src="{{asset('controlPanel/assets/js/pages/custom/login/login-general.js')}}"></script>
+	<script src="{{asset('cms/assets/js/pages/custom/login/login-general.js')}}"></script>
 	<!--end::Page Scripts-->
 
-	<script src="{{asset('controlPanel/assets/js/pages/features/miscellaneous/toastr.js')}}">
+	<script src="{{asset('cms/assets/js/pages/features/miscellaneous/toastr.js')}}">
 	</script>
 	{{-- <script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script> --}}
 	<script src="{{asset('js/axios.js')}}"></script>
