@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Market;
 use App\Models\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,12 +16,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
         $products=product::all();
 
-        return response()->view('cms.products.index',['products'=>$products]);   
+
+        if (Auth::guard('admin')->check()){
+
+            return response()->view('cms.products.index',['products'=>$products]); 
+        }
+        else{
+            if($request->has('id')){
+                $products =Product::where('market_id','=',$request->input('id'))->get();
+            }
+            
+         
+            return response()->view('front.products', ['products'=>$products]);
+        }
+
 
     }
 
@@ -49,7 +62,7 @@ class ProductController extends Controller
             'name' => 'required|string|min:2',
             'description' => 'required|string|min:2',
             'price' => 'required|numeric|min:1',
-            'discount_price' => 'nullable|numeric|min:1',
+            'discount_price' => 'required|numeric|min:0',
             'discount' => 'required|boolean',
             'image' => 'required|image|mimes:png,jpg,jpeg',
  

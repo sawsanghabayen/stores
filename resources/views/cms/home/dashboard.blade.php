@@ -61,7 +61,7 @@
                                                             <span
                                                                 class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{$admins_count}}</span>
                                                             <span
-                                                                class="font-weight-bold text-muted font-size-sm">{{__('cp.admins_count')}}</span>
+                                                                class="font-weight-bold text-muted font-size-sm">Admins Count</span>
                                                         </div>
                                                     </div>
                                                 </div>

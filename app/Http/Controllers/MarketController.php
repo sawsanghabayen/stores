@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Market;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,8 +18,20 @@ class MarketController extends Controller
      */
     public function index()
     {
-        $markets=Market::all();
-        return response()->view('cms.markets.index',['markets'=>$markets]);   
+
+
+        $markets=Market::withCount('products')->get();
+
+        if (Auth::guard('admin')->check()){
+
+            return response()->view('cms.markets.index',['markets'=>$markets]); 
+        }
+        else{
+           
+         
+            return response()->view('front.markets', ['markets'=>$markets ]);
+        }
+        
      }
 
     /**
@@ -89,7 +103,7 @@ class MarketController extends Controller
      */
     public function show(Market $market)
     {
-        //
+  
     }
 
     /**

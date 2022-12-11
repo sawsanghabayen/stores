@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\MarketController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +43,17 @@ Route::prefix('cms/admin')->middleware('auth:admin')->group(function () {
 
 });
 
-Route::get('/', function () {
-    return view('cms.parent');
+Route::prefix('store-project')->group(function () {
+    
+    Route::get('/',[ StoreController::class,'index'])->name('store.index');
+    Route::get('markets',[ MarketController::class,'index'])->name('frontmarket.index');
+    Route::get('products',[ ProductController::class,'index'])->name('frontproduct.index');
+    Route::resource('payments', PaymentController::class);
+
+
+
 });
+
+// Route::get('/', function () {
+//     return view('front.index');
+// });

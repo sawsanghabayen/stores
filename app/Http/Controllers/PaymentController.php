@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PaymentController extends Controller
 {
@@ -14,7 +16,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments =Payment::all();
+        return response()->view('cms.payments.index',['payments'=>$payments]);
+
     }
 
     /**
@@ -33,9 +37,43 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request )
     {
-        //
+        $validator = Validator($request->all(), [
+            'product_id' =>'required|numeric|exists:products,id',
+            
+            'price' => 'required',
+            // 'discount_price' => 'required',
+            
+
+        ]);
+
+        if (!$validator->fails()) {
+            $product = Product::find($request->product_id);
+            if (!is_null($product)) {
+                if (!Payment::where('product_id', $product->id)->exists()) {
+                    $payment = new Payment();
+                    $payment->product_id= $request->product_id;
+                    $payment->discount_price= $request->discount_price;
+                    if($product->discount)
+                    $payment->price= $request->price;
+                    else
+                    $payment->price= $request->price-($request->discount_price * $request->price)/100;
+
+                    $isSaved = $payment->save();
+                    if ($isSaved)
+                    return response()->json(['message' => 'Product cart added']);
+                
+            } else {
+                return response()->json(['message' => 'Product Not Found']);
+        }}
+        else {
+            return response()->json(
+                ['message' => $validator->getMessageBag()->first()],
+                Response::HTTP_BAD_REQUEST,
+            );
+        }
+        }
     }
 
     /**
