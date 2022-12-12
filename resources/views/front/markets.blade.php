@@ -18,7 +18,7 @@
                         <p class="text-right">{{$market->products_count.' '. 'Products'}}</p>
                         <a href="{{route('frontproduct.index',['id' => $market->id])}}" class="cat-img position-relative overflow-hidden mb-3">
                         {{-- <a href="{{route('front.supmarkets',['market_id'=>$market->id])}}" class="cat-img position-relative overflow-hidden mb-3"> --}}
-                            <img class="img-fluid" src="{{Storage::url($market->logo ?? '')}}" alt="">
+                            <img class="img-fluid" style="height: auto; max-width: 100%;" src="{{Storage::url($market->logo ?? '')}}" alt="">
                         </a>
                         <h5 class="font-weight-semi-bold m-0">{{$market->name}}</h5>
                         <p class="font-weight-semi-bold m-0">{{$market->address}}</p>

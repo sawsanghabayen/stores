@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('price');
             $table->float('discount_price');
+            $table->boolean('discount');
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

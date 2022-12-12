@@ -17,11 +17,12 @@ class StoreController extends Controller
      */
     public function index(Request $request)
     {
-        // $name=$request->query('name');
-        // $products_count=Market::withCount('products')->get();
-        // dd($products_count);
-        $products=Product::all();
-        $markets=Market::withCount('products')->get();
+      
+        $products=Product::withoutTrashed()->when($request->name ,function($query ,$value){
+            $query->where('name' ,'LIKE',"%$value%");
+        })->get();
+
+        $markets=Market::withoutTrashed()->withCount('products')->get();
     
         return response()->view('front.index',['products'=>$products,'markets'=>$markets]);
     }

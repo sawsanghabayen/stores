@@ -24,17 +24,12 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('front/css/style.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('cms/plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @yield('styles')
 
     <style>
-        .text-primary {
-        color: #D19C97 !important;
-    }
-    .product-wish{
-        font-size: 30px;
-        
-    }
+   
     </style>
 </head>
 <body>
@@ -47,13 +42,15 @@
             </a>
         </div>
         <div class="col-lg-6 col-6 text-left">
-            <form action="">
+            <form action="{{route('frontproduct.index')}}" method="get">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                    <input type="text" class="form-control" placeholder="Search for products" name="name">
                     <div class="input-group-append">
+                        <button type="submit">
                         <span class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search"></i>
                         </span>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -92,30 +89,35 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
+                        <a href="{{route('store.index')}}" class="nav-item nav-link active">Home</a>
+                        <a href="{{route('frontmarket.index')}}" class="nav-item nav-link">Stores</a>
+                        <a href="{{route('frontproduct.index')}}" class="nav-item nav-link">Products</a>
+                        <a href="#" class="nav-item nav-link">Contact</a>
+                    </div>
+                    {{-- <div class="navbar-nav ml-auto py-0">
+                        <a href="" class="nav-item nav-link">Login</a>
+                        <a href="" class="nav-item nav-link">Register</a>
+                    </div> --}}
+                </div>
+                {{-- <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
                         <a href="{{route('store.index')}}" class="nav-item nav-link ">Home</a>
-                         <a href="{{route('frontmarket.index')}}" class="nav-item nav-link ">Markets</a> 
+                         <a href="{{route('frontmarket.index')}}" class="nav-item nav-link ">Stores</a> 
                         <a href="{{route('frontproduct.index')}}" class="nav-item nav-link">Products</a>
                         <a href="#" class="nav-item nav-link">Contact</a>
 
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        {{-- <a href="{{route('cms.login' ,'user')}}" class="nav-item nav-link">Login</a> --}}
                        
-                        {{-- @if (Auth::guard('user')->check()) --}}
-          
                         <li class="nav-item dropdown">
                           <a href="javascript:void(0)" class="dropbtn"></a>
-                          {{-- <div class="dropdown-content"> --}}
-                            {{-- <a href="#" >
-                              <i class="fa-solid fa-right-from-bracket"></i> Logout
-                            </a>  --}}
-                          {{-- </div> --}}
+                      
                         </li>                           
-                        {{-- @else              --}}
+                     
                         <li class="nav-item">
                           <a class="nav-item nav-link" href="#">Login</a>
                         </li>                       
-                        {{-- <a href="" class="nav-item nav-link">Register</a> --}}
+                       
                            <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Register</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -125,9 +127,9 @@
                         </div> 
 
                         
-                        {{-- @endif --}}
+                     
                     </div>
-                 </div>
+                 </div> --}}
             </nav>
        
         </div>
@@ -202,7 +204,7 @@
             </p>
         </div>
         <div class="col-md-6 px-xl-0 text-center text-md-right">
-            <img class="img-fluid" src="img/payments.png" alt="">
+            <img class="img-fluid"  style="height: auto;" src="img/payments.png" alt="">
         </div>
     </div>
 </div>

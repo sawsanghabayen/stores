@@ -7,6 +7,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,9 @@ Route::prefix('cms/admin')->middleware('auth:admin')->group(function () {
     Route::resource('admins', AdminController::class);
     Route::resource('markets', MarketController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('payments', PaymentController::class);
+    // Route::resource('reports', ReportController::class);
+    Route::get('reports',  [ReportController::class, 'index'])->name('cms.reports');
     Route::get('dashboards',  [HomeController::class, 'index'])->name('cms.dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('cms.logout');
 

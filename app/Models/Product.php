@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory , SoftDeletes;
 
     protected $appends = ['store_name'];
 
@@ -25,4 +26,11 @@ class Product extends Model
     {
         return $this->discount ? 'Enable' : 'Disabled';
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'product_id', 'id');
+    }
+
+
 }

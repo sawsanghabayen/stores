@@ -11,7 +11,7 @@
     color: #a08582 !important;}
 
     .img-fluid  {
-        height: 150px;
+        /* height: 150px; */
     }
    
 </style>
@@ -31,8 +31,8 @@
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                 <p class="text-right">{{$market->products_count}}</p>
-                <a href="{{route('frontproduct.index',['id' => $market->id])}}" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid" src="{{Storage::url($market->logo ?? '')}}" alt="">
+                <a  href="{{route('frontproduct.index',['id' => $market->id])}}" class="cat-img position-relative overflow-hidden mb-3">
+                    <img class="img-fluid" style="height: auto , max-width: 100%;" src="{{Storage::url($market->logo ?? '')}}" alt="">
                 </a>
                 <h5 class="font-weight-semi-bold m-0">{{$market->name}}</h5>
                 <p class="font-weight-semi-bold m-0">{{$market->address}}</p>
@@ -86,18 +86,26 @@
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img  class="img-fluid w-100" src="{{Storage::url($product->image ?? '')}}" alt="">
+                    <img  class="img-fluid  w-100" style="height: auto , max-width: 100%;" src="{{Storage::url($product->image ?? '')}}" alt="">
                 </div>
                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                     <h6 class="text-truncate mb-3">{{$product->name}}</h6>
                     <p class="font-weight-semi-bold m-0">{{$product->store_name}} Store</p>
 
                     <div class="d-flex justify-content-center">
-                        <h6>$ {{
+                        <h6>$ 
+                        @if($product->discount)
+                            
+                            {{
                             $product->price-($product->discount_price * $product->price)/100
                             
                             
-                            }} </h6>
+                            }}
+                            @else
+                            {{$product->price}}
+                            @endif
+                            
+                        </h6>
                         @if($product->discount)
                         <h6 class="text-muted ml-2"><del>${{$product->price}}</del></h6>
 
@@ -110,12 +118,13 @@
                 <div class="card-footer d-flex justify-content-between bg-light border">
                     {{-- @if (Auth::guard('user')->check()) --}}
 
-                    <a  onclick="performCartStore({{$product->id }} ,{{ $product->discount_price}},
+                    <a  onclick="performCartStore({{$product->id }} ,{{$product->price}},
                         @if($product->discount)
                         {{$product->price-($product->discount_price * $product->price)/100}}
                          @else
                         {{ $product->price}}
                         @endif
+                        ,{{$product->discount }}
 
                         )"  class="btn btn-sm text-dark p-0">
                         <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
@@ -151,15 +160,17 @@
 @endsection
 <script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script>
 <script >
-  function performCartStore(id ,discount_price,price ) {
+  function performCartStore(id ,price,discount_price ,discount ) {
         axios.post('/store-project/payments',{
               product_id:  id,
               price:price,
               discount_price:discount_price,
+              discount:discount,
     
         })
         .then(function (response) {
             console.log(response);
+            alert(response.data.message);
             toastr.success(response.data.message);
             // window.location.href = '/rest/index';
         })

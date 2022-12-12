@@ -24,12 +24,12 @@
         </div>
     
         <div class="row px-xl-5 pb-3">
-            @foreach ( $products as $product )
+            @foreach ( $products_filter as $product )
 
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img  class="img-fluid w-100" src="{{Storage::url($product->image ?? '')}}" alt="">
+                        <img  class="img-fluid w-100" style="height: auto; max-width: 100%;" src="{{Storage::url($product->image ?? '')}}" alt="">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3">{{$product->name}}</h6>
@@ -54,14 +54,15 @@
                         {{-- <a href="" class="btn btn-sm text-dark p-0">{{$product->vendor->mobile}}</a> --}}
                         {{-- @if (Auth::guard('user')->check()) --}}
 
-                        <a  onclick="performCartStore({{$product->id }} ,{{ $product->discount_price}},
-                        @if($product->discount)
-                        {{$product->price-($product->discount_price * $product->price)/100}}
-                         @else
-                        {{ $product->price}}
-                        @endif
-
-                        )"  class="btn btn-sm text-dark p-0">
+                        <a  onclick="performCartStore({{$product->id }} ,{{$product->price}},
+                            @if($product->discount)
+                            {{$product->price-($product->discount_price * $product->price)/100}}
+                             @else
+                            {{ $product->price}}
+                            @endif
+                            ,{{$product->discount }}
+    
+                            )"  class="btn btn-sm text-dark p-0">
                             <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                         <a onclick=""class="product-wish" class="btn btn-sm text-dark p-0" 
                             {{-- @if($product->is_favorite) --}}
@@ -91,15 +92,17 @@
 @endsection
 <script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script>
 <script >
-    function performCartStore(id ,discount_price,price ) {
+function performCartStore(id ,price,discount_price ,discount ) {
         axios.post('/store-project/payments',{
               product_id:  id,
               price:price,
               discount_price:discount_price,
+              discount:discount,
     
         })
         .then(function (response) {
             console.log(response);
+            alert(response.data.message);
             toastr.success(response.data.message);
             // window.location.href = '/rest/index';
         })

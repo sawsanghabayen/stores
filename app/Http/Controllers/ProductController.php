@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products=product::all();
+        $products=product::withoutTrashed()->get();
 
 
         if (Auth::guard('admin')->check()){
@@ -27,11 +27,15 @@ class ProductController extends Controller
         }
         else{
             if($request->has('id')){
-                $products =Product::where('market_id','=',$request->input('id'))->get();
+                $products =Product::withoutTrashed()->where('market_id','=',$request->input('id'))->get();
             }
             
+        $products_filter=Product::withoutTrashed()->when($request->name ,function($query ,$value){
+            $query->where('name' ,'LIKE',"%$value%");
+        })->get();
+            
          
-            return response()->view('front.products', ['products'=>$products]);
+            return response()->view('front.products', ['products'=>$products ,'products_filter'=>$products_filter]);
         }
 
 
@@ -142,7 +146,7 @@ class ProductController extends Controller
             'name' => 'required|string|min:2',
             'description' => 'required|string|min:2',
             'price' => 'required|numeric|min:1',
-            'discount_price' => 'nullable|numeric|min:1',
+            'discount_price' => 'required|numeric|min:0',
             'discount' => 'required|boolean',
             'image' => 'nullable|image|mimes:png,jpg,jpeg',
  
@@ -194,10 +198,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $isDeleted = $product->delete();
-        if ($isDeleted) {
-            Storage::delete($product->image);
+        // if ($isDeleted) {
+        //     Storage::delete($product->image);
 
-        }
+        // }
         return response()->json(
             [
                 'title' => $isDeleted ? 'Deleted!' : 'Delete Failed!',

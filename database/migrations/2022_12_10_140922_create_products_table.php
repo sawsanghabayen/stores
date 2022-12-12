@@ -22,7 +22,6 @@ return new class extends Migration
             $table->boolean('discount')->default(false);
             $table->string('image');
             $table->foreignId('market_id')->constrained()->cascadeOnDelete();
-
             $table->SoftDeletes();
 
             $table->timestamps();

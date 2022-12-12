@@ -1,8 +1,8 @@
 @extends('cms.parent')
 
-@section('page-name',__('cms.products'))
+@section('page-name',__('cms.payments'))
 @section('main-page',__('cms.hr'))
-@section('sub-page',__('cms.products'))
+@section('sub-page',__('cms.payments'))
 @section('page-name-small',__('cms.index'))
 
 @section('styles')
@@ -15,13 +15,10 @@
     <!--begin::Header-->
     <div class="card-header border-0 py-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label font-weight-bolder text-dark">{{__('cms.products')}}</span>
+            <span class="card-label font-weight-bolder text-dark">{{__('cms.payments')}}</span>
             <span class="text-muted mt-3 font-weight-bold font-size-sm"></span>
         </h3>
-        <div class="card-toolbar">
-            <a href="{{route('products.create')}}"
-                class="btn btn-info font-weight-bolder font-size-sm">{{__('cms.create')}}</a>
-        </div>
+      
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -34,15 +31,14 @@
                         <th style="min-width: 120px">Image</th>
                         <th style="min-width: 150px">Store Name</th>
                         <th style="min-width: 150px">Name</th>
-                        <th style="min-width: 150px">Description</th>
                         <th style="min-width: 150px">Price</th>
                         <th style="min-width: 150px">Price After Discount </th>
-                        <th style="min-width: 150px">Discount Status</th>
+                        <th style="min-width: 150px">Date</th>
                         <th class="pr-0 text-right" style="min-width: 160px">{{__('cms.actions')}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($payments as $payment)
                     <tr>
                      
 
@@ -50,10 +46,10 @@
                             <div class="d-flex align-items-center">
                             <div class="symbol symbol-50 symbol-light mr-4">
                                 <span class="symbol-label">
-                                    @if ($product->image != null)
+                                    @if ($payment->product->image != null)
                                    
                                      
-                                    <img src="{{Storage::url($product->image ?? '')}}"
+                                    <img src="{{Storage::url($payment->product->image ?? '')}}"
                                         class="h-75 align-self-end" alt="" /> 
                                         @else
                                         <img src="{{asset('cms/assets/media/users/project.jpg')}}"
@@ -67,31 +63,30 @@
                
                  
                         <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->store_name}}</span>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$payment->product->market->name}}</span>
                         </td>
 
                         <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->name}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->description}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->price}}</span>
-                        </td>
-                        <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">@if($product->discount) {{$product->price-($product->discount_price * $product->price)/100}} @else {{$product->price}} @endif</span>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$payment->product->name}}</span>
                         </td>
                         
                         <td>
-                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$product->active_status}}</span>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$payment->price}}</span>
                         </td>
-                      
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg"> {{$payment->discount_price}} </span>
+                        </td>
+                        
+                        <td>
+                            <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{{$payment->created_at->diffForHumans()}}</span>
+                        </td>
+                        
+                     
                     
                         <td class="pr-0 text-right">
-                            {{-- @can('Update-product') --}}
+                            {{-- @can('Update-payment') --}}
                                 
-                            <a href="{{route('products.edit',$product->id)}}"
+                            <a href="{{route('payments.edit',$payment->id)}}"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
@@ -112,9 +107,9 @@
                                 </span>
                             </a>
                             {{-- @endcan --}}
-                            {{-- @can('Delete-product') --}}
+                            {{-- @can('Delete-payment') --}}
 
-                            <a href="#" onclick="performDelete('{{$product->id}}', this)"
+                            <a href="#" onclick="performDelete('{{$payment->id}}', this)"
                                 class="btn btn-icon btn-light btn-hover-primary btn-sm">
                                 <span class="svg-icon svg-icon-md svg-icon-primary">
                                     <!--begin::Svg Icon | path:assets/media/svg/icons/General/Trash.svg-->
@@ -151,7 +146,7 @@
 <script src="{{asset('cms/assets/js/pages/widgets.js')}}"></script>
 <script>
       function performDelete(id, reference) {
-        axios.delete('/cms/admin/products/'+id)
+        axios.delete('/cms/admin/payments/'+id)
         .then(function (response) {
             console.log(response);
             // toastr.success(response.data.message);

@@ -20,7 +20,7 @@ class MarketController extends Controller
     {
 
 
-        $markets=Market::withCount('products')->get();
+        $markets=Market::withoutTrashed()->withCount('products')->get();
 
         if (Auth::guard('admin')->check()){
 
@@ -176,11 +176,12 @@ class MarketController extends Controller
      */
     public function destroy(Market $market)
     {
+        $market->products()->delete();
         $isDeleted = $market->delete();
-        if ($isDeleted) {
-            Storage::delete($market->logo);
+        // if ($isDeleted ) {
+        //     Storage::delete($market->logo);
 
-        }
+        // }
         return response()->json(
             [
                 'title' => $isDeleted ? 'Deleted!' : 'Delete Failed!',
