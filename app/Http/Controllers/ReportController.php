@@ -14,7 +14,7 @@ class ReportController extends Controller
 
     public function index()
     {
-        $products_price = DB::table('payments')->join('products' ,'payments.product_id' ,'products.id')
+        $reports = DB::table('payments')->join('products' ,'payments.product_id' ,'products.id')
         ->select(  'products.name', DB::raw('SUM(payments.discount_price) as total')  )
         ->groupBy('product_id')
         ->get();
@@ -25,7 +25,7 @@ class ReportController extends Controller
        
     //    dd($products_price);
       
-        return response()->view('cms.reports.index',['products_price'=>$products_price]); 
+        return response()->view('cms.reports.index',['reports'=>$reports]); 
 
     }
 

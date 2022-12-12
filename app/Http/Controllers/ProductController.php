@@ -21,14 +21,18 @@ class ProductController extends Controller
         $products=product::withoutTrashed()->get();
 
 
+
         if (Auth::guard('admin')->check()){
+
 
             return response()->view('cms.products.index',['products'=>$products]); 
         }
         else{
+
             if($request->has('id')){
                 $products =Product::withoutTrashed()->where('market_id','=',$request->input('id'))->get();
             }
+            
             
         $products_filter=Product::withoutTrashed()->when($request->name ,function($query ,$value){
             $query->where('name' ,'LIKE',"%$value%");
@@ -38,6 +42,29 @@ class ProductController extends Controller
             return response()->view('front.products', ['products'=>$products ,'products_filter'=>$products_filter]);
         }
 
+
+    }
+
+    public function productsTrashed()
+    {
+        $productsTrashed=product::onlyTrashed()->get();
+
+
+
+        if (Auth::guard('admin')->check()){
+            
+
+            return response()->view('cms.products.trashed',['productsTrashed'=>$productsTrashed]); 
+        }
+       
+
+
+    }
+
+    public function restore()
+    {
+        $restore=product::onlyTrashed()->restore();
+        return redirect()->back();
 
     }
 

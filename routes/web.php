@@ -36,6 +36,8 @@ Route::prefix('cms/admin')->middleware('auth:admin')->group(function () {
     Route::resource('admins', AdminController::class);
     Route::resource('markets', MarketController::class);
     Route::resource('products', ProductController::class);
+    Route::get('productsTrashed', [ProductController::class, 'productsTrashed'])->name('cms.productsTrashed');
+    Route::get('productsRestore', [ProductController::class, 'restore'])->name('cms.restore');
     Route::resource('payments', PaymentController::class);
     // Route::resource('reports', ReportController::class);
     Route::get('reports',  [ReportController::class, 'index'])->name('cms.reports');

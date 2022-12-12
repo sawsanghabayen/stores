@@ -21,7 +21,13 @@
         <div class="card-toolbar">
             <a href="{{route('products.create')}}"
                 class="btn btn-info font-weight-bolder font-size-sm">{{__('cms.create')}}</a>
+
+                &nbsp; &nbsp;
+
+                <a href="{{route('cms.productsTrashed')}}"
+                class="btn btn-info font-weight-bolder font-size-sm">Trashed</a>
         </div>
+       
     </div>
     <!--end::Header-->
     <!--begin::Body-->

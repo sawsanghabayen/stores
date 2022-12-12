@@ -51,11 +51,7 @@ class PaymentController extends Controller
     {
         $validator = Validator($request->all(), [
             'product_id' =>'required|numeric|exists:products,id',
-            
             'price' => 'required',
-            // 'discount_price' => 'required',
-            
-
         ]);
 
         if (!$validator->fails()) {
@@ -67,18 +63,10 @@ class PaymentController extends Controller
                     $payment->price= $request->price;
                     $payment->discount_price= $request->discount_price;
                     $payment->discount= $request->discount;
-                    // if($product->discount)
-                    // $payment->price= $request->price;
-                    // else
-                    // $payment->price= $request->price-($request->discount_price * $request->price)/100;
-
                     $isSaved = $payment->save();
                     if ($isSaved)
                     return response()->json(['message' => 'Product cart added']);
-                
-        //     } else {
-        //         return response()->json(['message' => 'Product Not Found']);
-        // }
+        
     }
         else {
             return response()->json(

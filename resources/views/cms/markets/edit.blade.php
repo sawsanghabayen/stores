@@ -113,10 +113,10 @@
         formData.append('_method','PUT');
         formData.append('name',document.getElementById('name').value);
         formData.append('address',document.getElementById('address').value);
-        if(logo.input.files[0] != undefined) {
+        // if(logo.input.files[0] != undefined) {
         formData.append('logo',logo.input.files[0]);
 
-       }
+    //    }
 
         axios.post('/cms/admin/markets/{{$market->id}}',formData)
         .then(function (response) {
